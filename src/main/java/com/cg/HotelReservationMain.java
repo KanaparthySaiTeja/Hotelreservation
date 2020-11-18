@@ -1,7 +1,6 @@
 package com.cg;
 import java.util.*;
 import java.util.regex.Pattern;
-
 public class HotelReservationMain {
     public ArrayList<Hotel> hotelList = new ArrayList<>();
 
@@ -29,9 +28,11 @@ public class HotelReservationMain {
 
     public Hotel findCheapestBestRatedHotelByWeekdayRates(String startDate, String endDate) {
         double bestRating = hotelList.stream()
+                .filter(h -> h.validate())
                 .filter(h -> h.startDate.compareTo(startDate) > 0 && h.endDate.compareTo(endDate) < 0)
                 .reduce((hotel1, hotel2) -> hotel1.rating > hotel2.rating ? hotel1 : hotel2).get().rating;
         Optional<Hotel> cheapestBestRatedHotel = hotelList.stream()
+                .filter(h -> h.validate())
                 .filter(h -> h.startDate.compareTo(startDate) > 0 && h.endDate.compareTo(endDate) < 0)
                 .filter(h -> h.rating == bestRating)
                 .reduce((hotel1, hotel2) -> hotel1.weekdayRate < hotel2.weekdayRate ? hotel1 : hotel2);
@@ -40,7 +41,7 @@ public class HotelReservationMain {
         return null;
     }
 
-    public boolean validateDate(String startDate) throws Exception {
+    public boolean validateDate(String startDate) throws Exception  {
         if (Pattern.matches("^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$", startDate))
             return true;
         throw new Exception("Date format specified is : YYYY-MM-DD");
