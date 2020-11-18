@@ -2,6 +2,7 @@ package com.cg;
 
 import java.util.*;
 
+
 public class HotelReservationMain {
     public ArrayList<Hotel> hotelList = new ArrayList<>();
 
