@@ -28,7 +28,6 @@ public class Hotel {
         this.hotelName = hotelName;
         this.weekdayRate = weekdayRate;
         this.weekendRate = weekendRate;
-        
         this.startDate = startDate;
         this.endDate = endDate;
         this.rating = rating;
