@@ -4,6 +4,7 @@ public class Hotel {
     public double rate;
 
     public Hotel(String hotelName, int rate) {
+        
         this.hotelName = hotelName;
         this.rate = rate;
     }
